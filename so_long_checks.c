@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 17:05:01 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/02 17:05:31 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/02 18:33:58 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,46 @@ int	check_map_pe(t_game *game)
 	{
 		write(1, "\033[1;31mError more than 1 player\n\033[0m", 32);
 		return (0);
+	}
+	return (1);
+}
+
+int	check_walls_lr(t_game *g, int j)
+{
+	if (g->map[j * g->width] != '1')
+	{
+		printf("Error map not surounded with walls\n");
+		return (0);
+	}
+	if (g->map[(j + 1) * g->width - 1] != '1')
+	{
+		printf("Error map not surounded with walls\n");
+		return (0);
+	}
+	return (1);
+}
+
+int	check_walls(t_game *g)
+{
+	int	i;
+	int	j;
+
+	j = 0;
+	while (j < g->height)
+	{
+		i = 0;
+		while (i < g->width && (j == 0 || j == g->height - 1))
+		{
+			if (g->map[i] != '1')
+			{
+				printf("Error map not surounded with walls\n");
+				return (0);
+			}
+			i++;
+		}
+		if (!check_walls_lr(g, j))
+			return (0);
+		j++;
 	}
 	return (1);
 }

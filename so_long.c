@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 10:10:33 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/02 17:06:26 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/02 18:08:35 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		exit (0);
 	read_map(av[1], g);
-	if (!check_rect_map(g) || !check_map_pe(g))
+	if (!check_rect_map(g) || !check_map_pe(g) || !check_walls(g))
 		exit (0);
 	g->ml = mlx_init();
 	g->win = mlx_new_window(g->ml, 64 * g->width, 64 * g->height, "mlx");

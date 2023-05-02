@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 10:12:11 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/02 15:01:55 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/02 18:01:10 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,12 @@ char	*ft_strjoinnw(char const *s1, char const *s2)
 		if (count < s1len)
 			str[count] = s1[count];
 		else
-		{
-			if (s2[count - s1len] != '\n')
-				str[count] = s2[count - s1len];
-		}
+			str[count] = s2[count - s1len];
 		count++;
 	}
-	str[count - 1] = '\0';
+	if (str[count - 1] == '\n')
+		str[count - 1] = '\0';
+	else
+		str[count] = '\0';
 	return (free((void *)s1), free((void *)s2), str);
 }

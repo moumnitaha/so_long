@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 14:53:52 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/03 16:30:39 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/03 16:33:24 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	move_up_down(t_game *game, int d)
 		map[i] = '0';
 		map[i + d * width] = 'P';
 		game->mvmnts++;
-		printf("moves: %d & clct: %d\n", game->mvmnts, game->clcted);
+		printf("moves: %02d & clct: %d\n", game->mvmnts, game->clcted);
 	}
 	win_game(game, i + d * width);
 	set_imgs(game);
@@ -106,7 +106,7 @@ void	move_left_right(t_game *game, int d)
 		map[i] = '0';
 		map[i + d] = 'P';
 		game->mvmnts++;
-		printf("moves: %d & clct: %d\n", game->mvmnts, game->clcted);
+		printf("moves: %02d & clct: %d\n", game->mvmnts, game->clcted);
 	}
 	win_game(game, i + d);
 	set_imgs(game);

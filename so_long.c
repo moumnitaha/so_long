@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 10:10:33 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/03 18:52:45 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/03 18:57:16 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,11 @@ void	read_map(char *av, t_game *game)
 	}
 	line = get_next_line(fd);
 	game->width = ft_strlen(line) - 1;
-	while (line)
+	while (line && line[0] != '\n')
 	{
 		read = ft_strjoinnw(read, line);
 		line = get_next_line(fd);
+		printf("[%s]\n", line);
 		count++;
 	}
 	close(fd);

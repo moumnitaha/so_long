@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 10:10:33 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/02 18:08:35 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/02 19:02:29 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,9 @@ int	main(int ac, char **av)
 	read_map(av[1], g);
 	if (!check_rect_map(g) || !check_map_pe(g) || !check_walls(g))
 		exit (0);
+	check_player_pos(g);
 	g->ml = mlx_init();
-	g->win = mlx_new_window(g->ml, 64 * g->width, 64 * g->height, "mlx");
+	g->win = mlx_new_window(g->ml, 64 * g->width, 64 * g->height, "./so_long");
 	init_game(g);
 	set_imgs(g);
 	mlx_hook(g->win, X_EVENT_KEY_PRESS, 0, &key_press, g);

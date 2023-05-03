@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 17:05:01 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/02 18:33:58 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/02 19:05:00 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	check_walls(t_game *g)
 		i = 0;
 		while (i < g->width && (j == 0 || j == g->height - 1))
 		{
-			if (g->map[i] != '1')
+			if (g->map[i + j * g->width] != '1')
 			{
 				printf("Error map not surounded with walls\n");
 				return (0);
@@ -89,4 +89,28 @@ int	check_walls(t_game *g)
 		j++;
 	}
 	return (1);
+}
+
+int	check_player_pos(t_game *game)
+{
+	int	i;
+	int	j;
+	int	plyr;
+
+	i = 0;
+	j = 0;
+	plyr = 0;
+	while (plyr < ft_strlen(game->map) && game->map[plyr] != 'P')
+		plyr++;
+	if (game->map[plyr - 1] == '1')
+		i++;
+	if (game->map[plyr + 1] == '1')
+		i++;
+	if (game->map[plyr + game->width] == '1')
+		i++;
+	if (game->map[plyr - game->width] == '1')
+		i++;
+	if (i == 4)
+		printf("3okasha\n");
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 10:10:33 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/03 18:12:32 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/03 18:45:25 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ int	main(int ac, char **av)
 		printf("Error check\n");
 		exit (0);
 	}
-	check_player_pos(g);
 	g->mlx = mlx_init();
 	g->win = mlx_new_window(g->mlx, 64 * g->width, 64 * g->height, "./so_long");
 	g->clctbls = count_clctbls(g);

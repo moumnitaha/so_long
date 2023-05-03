@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 17:05:01 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/03 18:13:32 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/03 18:46:18 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,12 @@ int	map_p_e(t_game *game)
 	return (1);
 }
 
+int	exit_walls(void)
+{
+	printf("Error map not surounded with walls\n");
+	return (0);
+}
+
 int	valid_walls(t_game *g)
 {
 	int	i;
@@ -61,47 +67,14 @@ int	valid_walls(t_game *g)
 	while (i < ft_strlen(g->map))
 	{
 		if (i < width && g->map[i] != '1')
-		{
-			printf("Error map not surounded with walls\n");
-			return (0);
-		}
+			return (exit_walls());
 		if (i >= ft_strlen(g->map) - width && g->map[i] != '1')
-		{
-			printf("Error map not surounded with walls\n");
-			return (0);
-		}
+			return (exit_walls());
 		if ((!(i % width) || !((i + 1) % width)) && g->map[i] != '1')
-		{
-			printf("Error map not surounded with walls\n");
-			return (0);
-		}
+			return (exit_walls());
 		i++;
 	}
 	return (1);
-}
-
-int	check_player_pos(t_game *game)
-{
-	int	i;
-	int	j;
-	int	plyr;
-
-	i = 0;
-	j = 0;
-	plyr = 0;
-	while (plyr < ft_strlen(game->map) && game->map[plyr] != 'P')
-		plyr++;
-	if (game->map[plyr - 1] == '1')
-		i++;
-	if (game->map[plyr + 1] == '1')
-		i++;
-	if (game->map[plyr + game->width] == '1')
-		i++;
-	if (game->map[plyr - game->width] == '1')
-		i++;
-	if (i == 4)
-		printf("3okasha\n");
-	return (0);
 }
 
 int	map_ext(char *file)

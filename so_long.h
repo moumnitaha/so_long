@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 17:58:06 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/03 16:16:02 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/03 16:30:43 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,6 @@ int		check_rect_map(t_game *game);
 int		check_map_pe(t_game *game);
 int		check_walls(t_game *game);
 int		check_player_pos(t_game *game);
-int		clctbls(t_game *game);
+int		count_clctbls(t_game *game);
 
 #endif

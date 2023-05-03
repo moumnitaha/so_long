@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 14:53:52 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/03 16:25:11 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/03 16:30:39 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	set_imgs(t_game *g)
 	}
 }
 
-int	clctbls(t_game *game)
+int	count_clctbls(t_game *game)
 {
 	int	i;
 	int	count;

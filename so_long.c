@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 10:10:33 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/03 16:18:04 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/03 16:30:57 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	main(int ac, char **av)
 	check_player_pos(g);
 	g->mlx = mlx_init();
 	g->win = mlx_new_window(g->mlx, 64 * g->width, 64 * g->height, "./so_long");
-	g->clctbls = clctbls(g);
+	g->clctbls = count_clctbls(g);
 	printf("[%d]\n", g->clctbls);
 	init_game(g);
 	set_imgs(g);

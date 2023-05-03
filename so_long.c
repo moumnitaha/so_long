@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 10:10:33 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/03 18:58:15 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/03 20:05:28 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ void	read_map(char *av, t_game *game)
 	int		fd;
 	char	*line;
 	char	*read;
-	int		count;
+	int		height;
 
-	count = 0;
+	height = 0;
 	fd = open(av, O_RDONLY);
 	if (fd == -1)
 	{
@@ -67,11 +67,11 @@ void	read_map(char *av, t_game *game)
 	{
 		read = ft_strjoinnw(read, line);
 		line = get_next_line(fd);
-		count++;
+		height++;
 	}
 	close(fd);
 	free(line);
-	game->height = count;
+	game->height = height;
 	game->map = read;
 }
 

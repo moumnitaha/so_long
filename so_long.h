@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 17:58:06 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/03 18:45:10 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/03 20:08:34 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,6 @@
 # define KEY_DOWN		125
 # define KEY_LEFT		123
 # define KEY_RIGHT		124
-
-typedef struct s_player {
-	int	x;
-	int	y;
-}	t_player;
 
 typedef struct s_game {
 	int		height;

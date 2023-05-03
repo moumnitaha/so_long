@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 17:05:01 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/02 19:05:00 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/03 10:19:37 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,42 +51,31 @@ int	check_map_pe(t_game *game)
 	return (1);
 }
 
-int	check_walls_lr(t_game *g, int j)
-{
-	if (g->map[j * g->width] != '1')
-	{
-		printf("Error map not surounded with walls\n");
-		return (0);
-	}
-	if (g->map[(j + 1) * g->width - 1] != '1')
-	{
-		printf("Error map not surounded with walls\n");
-		return (0);
-	}
-	return (1);
-}
-
 int	check_walls(t_game *g)
 {
 	int	i;
-	int	j;
+	int	width;
 
-	j = 0;
-	while (j < g->height)
+	i = 0;
+	width = g->width;
+	while (i < ft_strlen(g->map))
 	{
-		i = 0;
-		while (i < g->width && (j == 0 || j == g->height - 1))
+		if (i < width && g->map[i] != '1')
 		{
-			if (g->map[i + j * g->width] != '1')
-			{
-				printf("Error map not surounded with walls\n");
-				return (0);
-			}
-			i++;
-		}
-		if (!check_walls_lr(g, j))
+			printf("Error map not surounded with walls\n");
 			return (0);
-		j++;
+		}
+		if (i >= ft_strlen(g->map) - width && g->map[i] != '1')
+		{
+			printf("Error map not surounded with walls\n");
+			return (0);
+		}
+		if ((!(i % width) || !((i + 1) % width)) && g->map[i] != '1')
+		{
+			printf("Error map not surounded with walls\n");
+			return (0);
+		}
+		i++;
 	}
 	return (1);
 }

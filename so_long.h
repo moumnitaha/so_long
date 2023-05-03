@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 17:58:06 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/03 16:30:43 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/03 18:13:05 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,13 @@ typedef struct s_game {
 }	t_game;
 
 char	*get_next_line(int fd);
+int		map_ext(char *filename);
 void	set_imgs(t_game *g);
 void	move_up_down(t_game *game, int d);
 void	move_left_right(t_game *game, int d);
-int		check_rect_map(t_game *game);
-int		check_map_pe(t_game *game);
-int		check_walls(t_game *game);
+int		rect_map(t_game *game);
+int		map_p_e(t_game *game);
+int		valid_walls(t_game *game);
 int		check_player_pos(t_game *game);
 int		count_clctbls(t_game *game);
 

@@ -6,13 +6,13 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 17:05:01 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/03 10:19:37 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/03 18:13:32 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	check_rect_map(t_game *game)
+int	rect_map(t_game *game)
 {
 	if (game->width * game->height != ft_strlen(game->map))
 	{
@@ -22,7 +22,7 @@ int	check_rect_map(t_game *game)
 	return (1);
 }
 
-int	check_map_pe(t_game *game)
+int	map_p_e(t_game *game)
 {
 	int	i;
 	int	p;
@@ -51,7 +51,7 @@ int	check_map_pe(t_game *game)
 	return (1);
 }
 
-int	check_walls(t_game *g)
+int	valid_walls(t_game *g)
 {
 	int	i;
 	int	width;
@@ -102,4 +102,28 @@ int	check_player_pos(t_game *game)
 	if (i == 4)
 		printf("3okasha\n");
 	return (0);
+}
+
+int	map_ext(char *file)
+{
+	int		len;
+	int		count;
+	int		i;
+	char	*ber;
+
+	len = ft_strlen(file);
+	count = 0;
+	i = 0;
+	ber = ".ber";
+	while (i < len)
+	{
+		if (i < 4 && (file[len - 1 - i] != ber[3 - i]))
+			return (0);
+		if (file[i] == '.')
+			count++;
+		i++;
+	}
+	if (count > 1)
+		return (0);
+	return (1);
 }

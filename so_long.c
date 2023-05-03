@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 10:10:33 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/03 16:56:19 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/03 18:12:32 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,16 @@ int	main(int ac, char **av)
 
 	g = malloc(sizeof(t_game));
 	if (ac != 2)
+	{
+		printf("Error args\n");
 		exit (0);
+	}
 	read_map(av[1], g);
-	if (!check_rect_map(g) || !check_map_pe(g) || !check_walls(g))
+	if (!rect_map(g) || !map_p_e(g) || !valid_walls(g) || !map_ext(av[1]))
+	{
+		printf("Error check\n");
 		exit (0);
+	}
 	check_player_pos(g);
 	g->mlx = mlx_init();
 	g->win = mlx_new_window(g->mlx, 64 * g->width, 64 * g->height, "./so_long");

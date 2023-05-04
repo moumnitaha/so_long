@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 17:58:06 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/04 20:17:28 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/04 20:25:52 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ typedef struct s_game {
 	char	*clct;
 	char	*exit;
 	char	*open;
-	char	*crct_l;
-	char	*crct_r;
+	char	*crc_l;
+	char	*crc_r;
 	char	*land;
 }	t_game;
 

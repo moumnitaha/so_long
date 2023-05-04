@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 10:10:33 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/04 12:47:55 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/04 16:34:57 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,14 @@ int	main(int ac, char **av)
 		exit (0);
 	}
 	read_map(av[1], g);
-	if (!count_clctbls(g))
-	{
-		ft_printf("Error");
-		exit (0);
-	}
 	if (!rect_map(g) || !valid_walls(g) || !map_p_e(g)
 		|| !map_ext(av[1]) || !valid_char(g))
 		exit (0);
+	if (!count_clctbls(g))
+	{
+		ft_printf("Error clctbls");
+		exit (0);
+	}
 	g->mlx = mlx_init();
 	g->win = mlx_new_window(g->mlx, 64 * g->width, 64 * g->height, "./so_long");
 	g->clctbls = count_clctbls(g);

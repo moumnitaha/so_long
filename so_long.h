@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 17:58:06 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/04 12:58:43 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/04 13:07:01 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@
 # include "gnl/get_next_line.h"
 # include "ft_printf/ft_printf.h"
 
-# define X_EVENT_KEY_PRESS			2
-# define X_EVENT_KEY_RELEASE		3
-# define X_EVENT_KEY_EXIT			17
-# define KEY_ESC		53
-# define KEY_W			13
-# define KEY_A			0
-# define KEY_S			1
-# define KEY_D			2
-# define KEY_UP			126
-# define KEY_DOWN		125
-# define KEY_LEFT		123
-# define KEY_RIGHT		124
+# define X_EVENT_KEY_PRESS		2
+# define X_EVENT_KEY_RELEASE	3
+# define X_EVENT_KEY_EXIT		17
+# define KEY_ESC				53
+# define KEY_W					13
+# define KEY_A					0
+# define KEY_S					1
+# define KEY_D					2
+# define KEY_UP					126
+# define KEY_DOWN				125
+# define KEY_LEFT				123
+# define KEY_RIGHT				124
 
 typedef struct s_game {
 	int		height;

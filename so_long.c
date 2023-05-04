@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 10:10:33 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/03 20:05:28 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/04 12:26:15 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	read_map(char *av, t_game *game)
 	fd = open(av, O_RDONLY);
 	if (fd == -1)
 	{
-		printf("Error opening map\n");
+		printf("Error: %s\n", strerror(errno));
 		exit (0);
 	}
 	line = get_next_line(fd);
@@ -82,19 +82,21 @@ int	main(int ac, char **av)
 	g = malloc(sizeof(t_game));
 	if (ac != 2)
 	{
-		printf("Error args\n");
+		printf("Error: %s\n", strerror(errno));
 		exit (0);
 	}
 	read_map(av[1], g);
-	if (!rect_map(g) || !map_p_e(g) || !valid_walls(g) || !map_ext(av[1]))
+	if (!count_clctbls(g))
 	{
-		printf("Error check\n");
+		printf("Error");
 		exit (0);
 	}
+	if (!rect_map(g) || !valid_walls(g) || !map_p_e(g)
+		|| !map_ext(av[1]) || !valid_char(g))
+		exit (0);
 	g->mlx = mlx_init();
 	g->win = mlx_new_window(g->mlx, 64 * g->width, 64 * g->height, "./so_long");
 	g->clctbls = count_clctbls(g);
-	printf("[%d]\n", g->clctbls);
 	init_game(g);
 	set_imgs(g);
 	mlx_hook(g->win, X_EVENT_KEY_PRESS, 0, &key_press, g);

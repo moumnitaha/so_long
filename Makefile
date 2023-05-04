@@ -6,7 +6,7 @@
 #    By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 15:13:15 by tmoumni           #+#    #+#              #
-#    Updated: 2023/05/03 17:34:19 by tmoumni          ###   ########.fr        #
+#    Updated: 2023/05/04 12:34:06 by tmoumni          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ MFLAGS = -lmlx -framework OpenGL -framework AppKit
 
 HEADER = so_long.h
 
-SRC = get_next_line.c get_next_line_utils.c so_long.c so_long_utils.c so_long_checks.c 
+SRC = get_next_line.c get_next_line_utils.c so_long.c\
+	  so_long_utils.c so_long_checks.c  map_chars_check.c
 
 OBJS = $(SRC:%.c=%.o)
 

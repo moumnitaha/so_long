@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 17:58:06 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/03 20:08:34 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/04 12:34:15 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <mlx.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <errno.h>
 # include "get_next_line.h"
 
 # define X_EVENT_KEY_PRESS			2
@@ -47,6 +48,12 @@ typedef struct s_game {
 	char	*land;
 }	t_game;
 
+typedef struct s_player {
+	int		x;
+	int		y;
+	int		moves;
+}	t_player;
+
 char	*get_next_line(int fd);
 int		map_ext(char *filename);
 void	set_imgs(t_game *g);
@@ -56,5 +63,7 @@ int		rect_map(t_game *game);
 int		map_p_e(t_game *game);
 int		valid_walls(t_game *game);
 int		count_clctbls(t_game *game);
+int		valid_char(t_game *game);
+int		valid_char(t_game *game);
 
 #endif

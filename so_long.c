@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 10:10:33 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/04 16:34:57 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/04 18:37:35 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@ void	init_game(t_game *game)
 	int	w;
 	int	h;
 
-	game->land = mlx_xpm_file_to_image(game->mlx, "./imgs/land.xpm", &w, &h);
-	game->crct = mlx_xpm_file_to_image(game->mlx, "./imgs/crct.xpm", &w, &h);
-	game->wall = mlx_xpm_file_to_image(game->mlx, "./imgs/wall.xpm", &w, &h);
-	game->clct = mlx_xpm_file_to_image(game->mlx, "./imgs/clct.xpm", &w, &h);
-	game->exit = mlx_xpm_file_to_image(game->mlx, "./imgs/exit.xpm", &w, &h);
+	game->land = mlx_xpm_file_to_image(game->mlx, "./imgs/land2.xpm", &w, &h);
+	game->crct = mlx_xpm_file_to_image(game->mlx, "./imgs/crct2.xpm", &w, &h);
+	game->wall = mlx_xpm_file_to_image(game->mlx, "./imgs/wall2.xpm", &w, &h);
+	game->clct = mlx_xpm_file_to_image(game->mlx, "./imgs/clct2.xpm", &w, &h);
+	game->exit = mlx_xpm_file_to_image(game->mlx, "./imgs/exit2.xpm", &w, &h);
+	game->open = mlx_xpm_file_to_image(game->mlx, "./imgs/open.xpm", &w, &h);
 	game->mvmnts = 0;
 	game->clcted = 0;
 }
@@ -91,11 +92,11 @@ int	main(int ac, char **av)
 		exit (0);
 	if (!count_clctbls(g))
 	{
-		ft_printf("Error clctbls");
+		ft_printf("Error clctbls\n");
 		exit (0);
 	}
 	g->mlx = mlx_init();
-	g->win = mlx_new_window(g->mlx, 64 * g->width, 64 * g->height, "./so_long");
+	g->win = mlx_new_window(g->mlx, 32 * g->width, 32 * g->height, "./so_long");
 	g->clctbls = count_clctbls(g);
 	init_game(g);
 	set_imgs(g);

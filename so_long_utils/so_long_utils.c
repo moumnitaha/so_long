@@ -6,40 +6,11 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 14:53:52 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/04 15:26:23 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/04 19:09:11 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
-void	set_imgs(t_game *g)
-{
-	int	i;
-	int	j;
-	int	d;
-
-	j = 0;
-	d = 64;
-	while (j < g->height)
-	{
-		i = 0;
-		while (i < g->width)
-		{
-			if (g->map[j * g->width + i] == '1')
-				mlx_put_image_to_window(g->mlx, g->win, g->wall, i * d, j * d);
-			else if (g->map[j * g->width + i] == 'C')
-				mlx_put_image_to_window(g->mlx, g->win, g->clct, i * d, j * d);
-			else if (g->map[j * g->width + i] == 'E')
-				mlx_put_image_to_window(g->mlx, g->win, g->exit, i * d, j * d);
-			else if (g->map[j * g->width + i] == 'P')
-				mlx_put_image_to_window(g->mlx, g->win, g->crct, i * d, j * d);
-			else if (g->map[j * g->width + i] == '0')
-				mlx_put_image_to_window(g->mlx, g->win, g->land, i * d, j * d);
-			i++;
-		}
-		j++;
-	}
-}
 
 int	count_clctbls(t_game *game)
 {
@@ -54,6 +25,35 @@ int	count_clctbls(t_game *game)
 			count++;
 	}
 	return (count);
+}
+
+void	set_imgs(t_game *g)
+{
+	int	i;
+	int	j;
+	int	d;
+
+	j = -1;
+	d = 32;
+	while (j++ < g->height)
+	{
+		i = -1;
+		while (i++ < g->width)
+		{
+			if (g->map[j * g->width + i] == '1')
+				mlx_put_image_to_window(g->mlx, g->win, g->wall, i * d, j * d);
+			else if (g->map[j * g->width + i] == 'C')
+				mlx_put_image_to_window(g->mlx, g->win, g->clct, i * d, j * d);
+			else if (g->map[j * g->width + i] == 'E' && g->clctbls != g->clcted)
+				mlx_put_image_to_window(g->mlx, g->win, g->exit, i * d, j * d);
+			else if (g->map[j * g->width + i] == 'E' && g->clctbls == g->clcted)
+				mlx_put_image_to_window(g->mlx, g->win, g->open, i * d, j * d);
+			else if (g->map[j * g->width + i] == 'P')
+				mlx_put_image_to_window(g->mlx, g->win, g->crct, i * d, j * d);
+			else if (g->map[j * g->width + i] == '0')
+				mlx_put_image_to_window(g->mlx, g->win, g->land, i * d, j * d);
+		}
+	}
 }
 
 void	win_game(t_game *game, int index)
@@ -86,8 +86,8 @@ void	move_up_down(t_game *game, int d)
 		game->mvmnts++;
 		ft_printf("moves: %d & clct: %d\n", game->mvmnts, game->clcted);
 	}
-	win_game(game, i + d * width);
 	set_imgs(game);
+	win_game(game, i + d * width);
 }
 
 void	move_left_right(t_game *game, int d)
@@ -108,6 +108,6 @@ void	move_left_right(t_game *game, int d)
 		game->mvmnts++;
 		ft_printf("moves: %d & clct: %d\n", game->mvmnts, game->clcted);
 	}
-	win_game(game, i + d);
 	set_imgs(game);
+	win_game(game, i + d);
 }

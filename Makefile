@@ -6,7 +6,7 @@
 #    By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 15:13:15 by tmoumni           #+#    #+#              #
-#    Updated: 2023/05/04 16:40:33 by tmoumni          ###   ########.fr        #
+#    Updated: 2023/05/04 19:12:56 by tmoumni          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,8 @@ CYAN = \033[1;36m
 END = \033[0m
 
 all: $(NAME)
+	@echo "\n$(GREEN)[[Checking normes]]$(END)\n"
+	@norminette
 	@echo "\n$(GREEN)[[Game created successfully!]]$(END)\n"
 
 %.o : %.c $(HEADER)

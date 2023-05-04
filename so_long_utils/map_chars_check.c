@@ -6,11 +6,11 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 12:33:02 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/04 12:35:12 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/04 12:52:19 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 int	included_char(char c)
 {
@@ -39,7 +39,7 @@ int	valid_char(t_game *game)
 	{
 		if (!included_char(map[i]))
 		{
-			printf("Error: invalid char [%c] in map\n", map[i]);
+			ft_printf("Error: invalid char [%c] in map\n", map[i]);
 			return (0);
 		}
 		i++;

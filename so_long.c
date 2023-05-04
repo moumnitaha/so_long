@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 10:10:33 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/04 12:26:15 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/04 12:47:55 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	read_map(char *av, t_game *game)
 	fd = open(av, O_RDONLY);
 	if (fd == -1)
 	{
-		printf("Error: %s\n", strerror(errno));
+		ft_printf("Error: %s\n", strerror(errno));
 		exit (0);
 	}
 	line = get_next_line(fd);
@@ -82,13 +82,13 @@ int	main(int ac, char **av)
 	g = malloc(sizeof(t_game));
 	if (ac != 2)
 	{
-		printf("Error: %s\n", strerror(errno));
+		ft_printf("Error: %s\n", strerror(errno));
 		exit (0);
 	}
 	read_map(av[1], g);
 	if (!count_clctbls(g))
 	{
-		printf("Error");
+		ft_printf("Error");
 		exit (0);
 	}
 	if (!rect_map(g) || !valid_walls(g) || !map_p_e(g)

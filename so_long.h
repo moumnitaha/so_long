@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 17:58:06 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/04 12:34:15 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/04 12:58:43 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <errno.h>
-# include "get_next_line.h"
+# include "gnl/get_next_line.h"
+# include "ft_printf/ft_printf.h"
 
 # define X_EVENT_KEY_PRESS			2
 # define X_EVENT_KEY_RELEASE		3
@@ -55,6 +56,7 @@ typedef struct s_player {
 }	t_player;
 
 char	*get_next_line(int fd);
+int		ft_printf(const char *str, ...);
 int		map_ext(char *filename);
 void	set_imgs(t_game *g);
 void	move_up_down(t_game *game, int d);

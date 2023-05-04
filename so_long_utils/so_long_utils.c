@@ -6,11 +6,11 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 14:53:52 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/04 12:27:15 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/04 12:52:13 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 void	set_imgs(t_game *g)
 {
@@ -60,7 +60,7 @@ void	win_game(t_game *game, int index)
 {
 	if (game->map[index] == 'E' && game->clcted == game->clctbls)
 	{
-		printf("\n\033[1;32m[[[ u win ]]]\033[0m\n");
+		ft_printf("\n\033[1;32m[[[ u win ]]]\033[0m\n");
 		mlx_destroy_image(game->mlx, game->win);
 		exit(0);
 	}
@@ -84,7 +84,7 @@ void	move_up_down(t_game *game, int d)
 		map[i] = '0';
 		map[i + d * width] = 'P';
 		game->mvmnts++;
-		printf("moves: %02d & clct: %d\n", game->mvmnts, game->clcted);
+		ft_printf("moves: %02d & clct: %d\n", game->mvmnts, game->clcted);
 	}
 	win_game(game, i + d * width);
 	set_imgs(game);
@@ -106,7 +106,7 @@ void	move_left_right(t_game *game, int d)
 		map[i] = '0';
 		map[i + d] = 'P';
 		game->mvmnts++;
-		printf("moves: %02d & clct: %d\n", game->mvmnts, game->clcted);
+		ft_printf("moves: %02d & clct: %d\n", game->mvmnts, game->clcted);
 	}
 	win_game(game, i + d);
 	set_imgs(game);

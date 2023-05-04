@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 10:10:33 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/04 18:37:35 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/04 20:06:18 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@ void	init_game(t_game *game)
 	int	h;
 
 	game->land = mlx_xpm_file_to_image(game->mlx, "./imgs/land2.xpm", &w, &h);
-	game->crct = mlx_xpm_file_to_image(game->mlx, "./imgs/crct2.xpm", &w, &h);
+	game->crct_l = mlx_xpm_file_to_image(game->mlx, "./imgs/crct_l.xpm", &w, &h);
+	game->crct_r = mlx_xpm_file_to_image(game->mlx, "./imgs/crct_r.xpm", &w, &h);
 	game->wall = mlx_xpm_file_to_image(game->mlx, "./imgs/wall2.xpm", &w, &h);
-	game->clct = mlx_xpm_file_to_image(game->mlx, "./imgs/clct2.xpm", &w, &h);
+	game->clct = mlx_xpm_file_to_image(game->mlx, "./imgs/clct.xpm", &w, &h);
 	game->exit = mlx_xpm_file_to_image(game->mlx, "./imgs/exit2.xpm", &w, &h);
 	game->open = mlx_xpm_file_to_image(game->mlx, "./imgs/open.xpm", &w, &h);
 	game->mvmnts = 0;
@@ -99,7 +100,7 @@ int	main(int ac, char **av)
 	g->win = mlx_new_window(g->mlx, 32 * g->width, 32 * g->height, "./so_long");
 	g->clctbls = count_clctbls(g);
 	init_game(g);
-	set_imgs(g);
+	set_imgs(g, 1);
 	mlx_hook(g->win, X_EVENT_KEY_PRESS, 0, &key_press, g);
 	mlx_hook(g->win, X_EVENT_KEY_EXIT, 0, &exit_game, g);
 	mlx_loop(g->mlx);

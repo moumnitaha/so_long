@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 17:58:06 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/04 18:38:08 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/04 20:17:28 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ typedef struct s_game {
 	char	*clct;
 	char	*exit;
 	char	*open;
-	char	*crct;
+	char	*crct_l;
+	char	*crct_r;
 	char	*land;
 }	t_game;
 
@@ -59,7 +60,7 @@ typedef struct s_player {
 char	*get_next_line(int fd);
 int		ft_printf(const char *str, ...);
 int		map_ext(char *filename);
-void	set_imgs(t_game *g);
+void	set_imgs(t_game *g, int d);
 void	move_up_down(t_game *game, int d);
 void	move_left_right(t_game *game, int d);
 int		rect_map(t_game *game);
@@ -70,5 +71,6 @@ int		valid_char(t_game *game);
 int		valid_char(t_game *game);
 int		valid_path(char *map, int pos, int width);
 int		player_pos(t_game *game);
+void	mlx_put_img(int i, int j, int d, t_game *g);
 
 #endif

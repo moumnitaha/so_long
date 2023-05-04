@@ -6,7 +6,7 @@
 #    By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 15:13:15 by tmoumni           #+#    #+#              #
-#    Updated: 2023/05/04 19:12:56 by tmoumni          ###   ########.fr        #
+#    Updated: 2023/05/04 20:21:03 by tmoumni          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ MFLAGS = -lmlx -framework OpenGL -framework AppKit
 
 HEADER = so_long.h
 
-SRC = gnl/get_next_line.c gnl/get_next_line_utils.c so_long.c so_long_utils/so_long_utils.c\
+SRC = gnl/get_next_line.c gnl/get_next_line_utils.c so_long.c so_long_utils/so_long_utils.c so_long_utils/so_long_imgs.c\
 so_long_utils/so_long_checks.c so_long_utils/so_long_validation.c ft_printf/ft_printf.c ft_printf/ft_putnbr.c\
 ft_printf/ft_putchar.c ft_printf/ft_putstr.c ft_printf/ft_puthex.c ft_printf/ft_putunbr.c ft_printf/ft_putptr.c
 
@@ -33,8 +33,6 @@ CYAN = \033[1;36m
 END = \033[0m
 
 all: $(NAME)
-	@echo "\n$(GREEN)[[Checking normes]]$(END)\n"
-	@norminette
 	@echo "\n$(GREEN)[[Game created successfully!]]$(END)\n"
 
 %.o : %.c $(HEADER)

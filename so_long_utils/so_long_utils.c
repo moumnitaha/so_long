@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 14:53:52 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/04 19:09:11 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/04 20:20:10 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,31 +27,18 @@ int	count_clctbls(t_game *game)
 	return (count);
 }
 
-void	set_imgs(t_game *g)
+void	set_imgs(t_game *g, int d)
 {
 	int	i;
 	int	j;
-	int	d;
 
 	j = -1;
-	d = 32;
 	while (j++ < g->height)
 	{
 		i = -1;
 		while (i++ < g->width)
 		{
-			if (g->map[j * g->width + i] == '1')
-				mlx_put_image_to_window(g->mlx, g->win, g->wall, i * d, j * d);
-			else if (g->map[j * g->width + i] == 'C')
-				mlx_put_image_to_window(g->mlx, g->win, g->clct, i * d, j * d);
-			else if (g->map[j * g->width + i] == 'E' && g->clctbls != g->clcted)
-				mlx_put_image_to_window(g->mlx, g->win, g->exit, i * d, j * d);
-			else if (g->map[j * g->width + i] == 'E' && g->clctbls == g->clcted)
-				mlx_put_image_to_window(g->mlx, g->win, g->open, i * d, j * d);
-			else if (g->map[j * g->width + i] == 'P')
-				mlx_put_image_to_window(g->mlx, g->win, g->crct, i * d, j * d);
-			else if (g->map[j * g->width + i] == '0')
-				mlx_put_image_to_window(g->mlx, g->win, g->land, i * d, j * d);
+			mlx_put_img(i, j, d, g);
 		}
 	}
 }
@@ -60,7 +47,7 @@ void	win_game(t_game *game, int index)
 {
 	if (game->map[index] == 'E' && game->clcted == game->clctbls)
 	{
-		ft_printf("\n\033[1;32m[[[ u win ]]]\033[0m\n");
+		ft_printf("\n\033[1;32m[[ Congratulations, u win ]]\033[0m\n");
 		mlx_destroy_image(game->mlx, game->win);
 		exit(0);
 	}
@@ -86,7 +73,7 @@ void	move_up_down(t_game *game, int d)
 		game->mvmnts++;
 		ft_printf("moves: %d & clct: %d\n", game->mvmnts, game->clcted);
 	}
-	set_imgs(game);
+	set_imgs(game, 1);
 	win_game(game, i + d * width);
 }
 
@@ -108,6 +95,6 @@ void	move_left_right(t_game *game, int d)
 		game->mvmnts++;
 		ft_printf("moves: %d & clct: %d\n", game->mvmnts, game->clcted);
 	}
-	set_imgs(game);
+	set_imgs(game, d);
 	win_game(game, i + d);
 }

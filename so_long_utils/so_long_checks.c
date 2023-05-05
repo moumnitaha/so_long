@@ -6,17 +6,34 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 17:05:01 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/04 12:52:24 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/05 16:57:06 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
+int	map_len(t_game *game)
+{
+	int		len;
+	char	**map;
+	int		i;
+
+	len = 0;
+	i = 0;
+	map = game->map;
+	while (i < game->height)
+	{
+		len += ft_strlen(map[i]);
+		i++;
+	}
+	return (len);
+}
+
 int	rect_map(t_game *game)
 {
-	if (game->width * game->height != ft_strlen(game->map) || !game->height)
+	if (game->width * game->height != map_len(game))
 	{
-		ft_printf("\033[1;31mError map shape not rectangular\n \033[0m");
+		ft_printf("\033[1;31m\nError: map shape not rectangular\033[0m\n\n");
 		return (0);
 	}
 	return (1);
@@ -25,27 +42,26 @@ int	rect_map(t_game *game)
 int	map_p_e(t_game *game)
 {
 	int	i;
-	int	p;
-	int	e;
+	int	j;
+	int	p_e;
 
 	i = 0;
-	p = 0;
-	e = 0;
-	while (i++ < ft_strlen(game->map))
+	p_e = 0;
+	j = 0;
+	while (i < game->height)
 	{
-		if (game->map[i] == 'P')
-			p++;
-		if (game->map[i] == 'E')
-			e++;
+		j = 0;
+		while (j < game->width)
+		{
+			if (game->map[i][j] == 'P' || game->map[i][j] == 'E')
+				p_e++;
+			j++;
+		}
+		i++;
 	}
-	if (e != 1)
+	if (p_e != 2)
 	{	
-		ft_printf("\033[1;31m\nError more\\less than 1 exit\n \033[0m");
-		return (0);
-	}
-	if (p != 1)
-	{
-		ft_printf("\033[1;31m\nError more\\less than 1 player\n \033[0m");
+		ft_printf("\033[1;31m\nError: more\\less than 1 exit - player\033[0m\n\n");
 		return (0);
 	}
 	return (1);
@@ -53,55 +69,29 @@ int	map_p_e(t_game *game)
 
 int	error_walls(void)
 {
-	ft_printf("\033[1;31m\nError map not surounded with walls\n\033[0m");
+	ft_printf("\033[1;31m\nError: map not surounded with walls\033[0m\n\n");
 	return (0);
 }
 
 int	valid_walls(t_game *g)
 {
 	int	i;
-	int	width;
+	int	j;
 
 	i = 0;
-	width = g->width;
-	while (i < ft_strlen(g->map))
+	j = 0;
+	while (i < g->height)
 	{
-		if (i < width && g->map[i] != '1')
-			return (error_walls());
-		if (i >= ft_strlen(g->map) - width && g->map[i] != '1')
-			return (error_walls());
-		if ((!(i % width) || !((i + 1) % width)) && g->map[i] != '1')
+		if (g->map[i][j] != '1' || g->map[i][g->width - 1] != '1')
 			return (error_walls());
 		i++;
 	}
-	return (1);
-}
-
-int	map_ext(char *file)
-{
-	int		len;
-	int		dot;
-	int		i;
-	char	*ber;
-
-	len = ft_strlen(file);
-	dot = 0;
-	i = -1;
-	ber = ".ber";
-	while (i++ < len)
+	i = 0;
+	while (j < g->width)
 	{
-		if (i < 4 && (file[len - 1 - i] != ber[3 - i]))
-		{
-			ft_printf("\033[1;31m\nError map ext\n\033[0m");
-			return (0);
-		}
-		if (file[i] == '.')
-			dot++;
-	}
-	if (dot > 1)
-	{
-		ft_printf("\033[1;31m\nError map ext\n\033[0m");
-		return (0);
+		if (g->map[i][j] != '1' || g->map[g->height - 1][j] != '1')
+			return (error_walls());
+		j++;
 	}
 	return (1);
 }

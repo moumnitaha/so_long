@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 17:58:06 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/04 20:25:52 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/05 16:56:40 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ typedef struct s_game {
 	int		width;
 	int		mvmnts;
 	int		clcted;
+	char	**map;
 	void	*mlx;
 	void	*win;
-	char	*map;
 	char	*wall;
 	char	*clct;
 	char	*exit;
@@ -59,18 +59,20 @@ typedef struct s_player {
 
 char	*get_next_line(int fd);
 int		ft_printf(const char *str, ...);
+int		key_press(int keycode, t_game *game);
 int		map_ext(char *filename);
 void	set_imgs(t_game *g, int d);
-void	move_up_down(t_game *game, int d);
-void	move_left_right(t_game *game, int d);
+void	move_ud_lr(t_game *game, int u_d, int l_r);
+int		exit_game(t_game *game);
 int		rect_map(t_game *game);
 int		map_p_e(t_game *game);
 int		valid_walls(t_game *game);
 int		count_clctbls(t_game *game);
 int		valid_char(t_game *game);
 int		valid_char(t_game *game);
-int		valid_path(char *map, int pos, int width);
-int		player_pos(t_game *game);
+int		*player_pos(t_game *game);
 void	mlx_put_img(int i, int j, int d, t_game *g);
+// int		valid_path(char *map, int pos, int width);
+// void	draw_map(t_game *game);
 
 #endif

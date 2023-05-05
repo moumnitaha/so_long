@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 10:10:33 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/04 20:25:44 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/05 17:18:47 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,53 +28,57 @@ void	init_game(t_game *game)
 	game->clcted = 0;
 }
 
-int	exit_game(t_game *game)
+int	get_height(int fd)
 {
-	mlx_destroy_window(game->mlx, game->win);
-	exit(0);
+	int		height;
+	char	*line;
+
+	height = 0;
+	line = get_next_line(fd);
+	while (line)
+	{
+		free(line);
+		line = get_next_line(fd);
+		height++;
+	}
+	free(line);
+	return (height);
 }
 
-int	key_press(int keycode, t_game *game)
+void	remove_nl(char *str)
 {
-	if (keycode == KEY_W || keycode == KEY_UP)
-		move_up_down(game, -1);
-	else if (keycode == KEY_S || keycode == KEY_DOWN)
-		move_up_down(game, 1);
-	else if (keycode == KEY_A || keycode == KEY_LEFT)
-		move_left_right(game, -1);
-	else if (keycode == KEY_D || keycode == KEY_RIGHT)
-		move_left_right(game, 1);
-	else if (keycode == KEY_ESC)
-		exit_game(game);
-	return (0);
+	int	len;
+
+	len = ft_strlen(str);
+	if (str[len - 1] == '\n')
+		str[len - 1] = '\0';
 }
 
 void	read_map(char *av, t_game *game)
 {
 	int		fd;
 	char	*line;
-	char	*read;
 	int		height;
 
 	height = 0;
 	fd = open(av, O_RDONLY);
 	if (fd == -1)
-	{
 		ft_printf("Error: %s\n", strerror(errno));
-		exit (0);
-	}
+	game->map = (char **)malloc(sizeof(char *) * get_height(fd));
+	close(fd);
+	fd = open(av, O_RDONLY);
 	line = get_next_line(fd);
 	game->width = ft_strlen(line) - 1;
-	while (line && line[0] != '\n')
+	while (line)
 	{
-		read = ft_strjoinnw(read, line);
+		remove_nl(line);
+		game->map[height] = line;
 		line = get_next_line(fd);
 		height++;
 	}
-	close(fd);
 	free(line);
+	close(fd);
 	game->height = height;
-	game->map = read;
 }
 
 int	main(int ac, char **av)
@@ -88,8 +92,8 @@ int	main(int ac, char **av)
 		exit (0);
 	}
 	read_map(av[1], g);
-	if (!rect_map(g) || !valid_walls(g) || !map_p_e(g)
-		|| !map_ext(av[1]) || !valid_char(g))
+	if (!map_ext(av[1]) || !rect_map(g) || !valid_walls(g) || !map_p_e(g)
+		|| !valid_char(g))
 		exit (0);
 	if (!count_clctbls(g))
 	{

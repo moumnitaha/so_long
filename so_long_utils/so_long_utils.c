@@ -6,23 +6,45 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 14:53:52 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/04 20:20:10 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/05 16:55:14 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
+int	key_press(int keycode, t_game *game)
+{
+	if (keycode == KEY_W || keycode == KEY_UP)
+		move_ud_lr(game, -1, 0);
+	else if (keycode == KEY_S || keycode == KEY_DOWN)
+		move_ud_lr(game, 1, 0);
+	else if (keycode == KEY_A || keycode == KEY_LEFT)
+		move_ud_lr(game, 0, -1);
+	else if (keycode == KEY_D || keycode == KEY_RIGHT)
+		move_ud_lr(game, 0, 1);
+	else if (keycode == KEY_ESC)
+		exit_game(game);
+	return (0);
+}
+
 int	count_clctbls(t_game *game)
 {
 	int	i;
+	int	j;
 	int	count;
 
 	i = 0;
 	count = 0;
-	while (i++ < ft_strlen(game->map))
+	while (i < game->height)
 	{
-		if (game->map[i] == 'C')
-			count++;
+		j = 0;
+		while (j < game->width)
+		{
+			if (game->map[i][j] == 'C')
+				count++;
+			j++;
+		}
+		i++;
 	}
 	return (count);
 }
@@ -32,20 +54,22 @@ void	set_imgs(t_game *g, int d)
 	int	i;
 	int	j;
 
-	j = -1;
-	while (j++ < g->height)
+	i = 0;
+	while (i < g->height)
 	{
-		i = -1;
-		while (i++ < g->width)
+		j = 0;
+		while (j < g->width)
 		{
 			mlx_put_img(i, j, d, g);
+			j++;
 		}
+		i++;
 	}
 }
 
-void	win_game(t_game *game, int index)
+void	win_game(t_game *game, int i, int j)
 {
-	if (game->map[index] == 'E' && game->clcted == game->clctbls)
+	if (game->map[i][j] == 'E' && game->clcted == game->clctbls)
 	{
 		ft_printf("\n\033[1;32m[[ Congratulations, u win ]]\033[0m\n");
 		mlx_destroy_image(game->mlx, game->win);
@@ -53,48 +77,30 @@ void	win_game(t_game *game, int index)
 	}
 }
 
-void	move_up_down(t_game *game, int d)
+void	move_ud_lr(t_game *game, int u_d, int l_r)
 {
-	int		i;
-	int		width;
-	char	*map;
+	int			x;
+	int			y;
+	static int	d;
+	char		**map;
 
-	i = 0;
 	map = game->map;
-	width = game->width;
-	while (map[i] && map[i] != 'P')
-		i++;
-	if (map[i + d * width] == '0' || map[i + d * width] == 'C')
+	x = player_pos(game)[0];
+	y = player_pos(game)[1];
+	if (l_r)
+		d = l_r;
+	if (map[y + u_d][x + l_r] == '0' || map[y + u_d][x + l_r] == 'C')
 	{
-		if (map[i + d * width] == 'C')
+		if (map[y + u_d][x + l_r] == 'C')
 			game->clcted++;
-		map[i] = '0';
-		map[i + d * width] = 'P';
-		game->mvmnts++;
-		ft_printf("moves: %d & clct: %d\n", game->mvmnts, game->clcted);
-	}
-	set_imgs(game, 1);
-	win_game(game, i + d * width);
-}
-
-void	move_left_right(t_game *game, int d)
-{
-	int		i;
-	char	*map;
-
-	i = 0;
-	map = game->map;
-	while (map[i] && map[i] != 'P')
-		i++;
-	if (map[i + d] == '0' || map[i + d] == 'C')
-	{
-		if (map[i + d] == 'C')
-			game->clcted++;
-		map[i] = '0';
-		map[i + d] = 'P';
+		map [y][x] = '0';
+		if (l_r)
+			map[y][x + l_r] = 'P';
+		if (u_d)
+			map[y + u_d][x] = 'P';
 		game->mvmnts++;
 		ft_printf("moves: %d & clct: %d\n", game->mvmnts, game->clcted);
 	}
 	set_imgs(game, d);
-	win_game(game, i + d);
+	win_game(game, y + u_d, x + l_r);
 }

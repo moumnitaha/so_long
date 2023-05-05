@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:14:00 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/04 20:26:16 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/05 15:10:02 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 void	mlx_put_img(int i, int j, int d, t_game *g)
 {
-	if (g->map[j * g->width + i] == '1')
-		mlx_put_image_to_window(g->mlx, g->win, g->wall, i * 32, j * 32);
-	else if (g->map[j * g->width + i] == 'C')
-		mlx_put_image_to_window(g->mlx, g->win, g->clct, i * 32, j * 32);
-	else if (g->map[j * g->width + i] == 'E' && g->clctbls != g->clcted)
-		mlx_put_image_to_window(g->mlx, g->win, g->exit, i * 32, j * 32);
-	else if (g->map[j * g->width + i] == 'E' && g->clctbls == g->clcted)
-		mlx_put_image_to_window(g->mlx, g->win, g->open, i * 32, j * 32);
-	else if (g->map[j * g->width + i] == 'P' && d == -1)
-		mlx_put_image_to_window(g->mlx, g->win, g->crc_l, i * 32, j * 32);
-	else if (g->map[j * g->width + i] == 'P' && d == 1)
-		mlx_put_image_to_window(g->mlx, g->win, g->crc_r, i * 32, j * 32);
-	else if (g->map[j * g->width + i] == '0')
-		mlx_put_image_to_window(g->mlx, g->win, g->land, i * 32, j * 32);
+	if (g->map[i][j] == '1')
+		mlx_put_image_to_window(g->mlx, g->win, g->wall, j * 32, i * 32);
+	else if (g->map[i][j] == 'C')
+		mlx_put_image_to_window(g->mlx, g->win, g->clct, j * 32, i * 32);
+	else if (g->map[i][j] == 'E' && g->clctbls != g->clcted)
+		mlx_put_image_to_window(g->mlx, g->win, g->exit, j * 32, i * 32);
+	else if (g->map[i][j] == 'E' && g->clctbls == g->clcted)
+		mlx_put_image_to_window(g->mlx, g->win, g->open, j * 32, i * 32);
+	else if (g->map[i][j] == 'P' && d == -1)
+		mlx_put_image_to_window(g->mlx, g->win, g->crc_l, j * 32, i * 32);
+	else if (g->map[i][j] == 'P' && (d == 1 || !d))
+		mlx_put_image_to_window(g->mlx, g->win, g->crc_r, j * 32, i * 32);
+	else if (g->map[i][j] == '0')
+		mlx_put_image_to_window(g->mlx, g->win, g->land, j * 32, i * 32);
 }

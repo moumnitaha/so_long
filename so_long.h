@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 17:58:06 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/06 17:35:42 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/06 20:04:58 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	*get_next_line(int fd);
 int		ft_printf(const char *str, ...);
 int		key_press(int keycode, t_game *game);
 int		map_ext(char *filename);
-int		find_path(int x, int y, t_game *game, char c);
+int		find_path(int x, int y, t_game *game, char c, char **tab);
 void	set_imgs(t_game *g, int d);
 void	move_ud_lr(t_game *game, int u_d, int l_r);
 int		exit_game(t_game *game);

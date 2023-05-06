@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 10:10:33 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/06 18:25:40 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/06 20:05:27 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	main(int ac, char **av)
 		exit (1);
 	}
 	read_map(av[1], g);
-	if (find_path(player_pos(g)[0], player_pos(g)[1], g, 'C'))
+	if (find_path(player_pos(g)[0], player_pos(g)[1], g, 'C', NULL))
 		ft_printf("Path found\n");
 	else
 		ft_printf("Path Not found\n");

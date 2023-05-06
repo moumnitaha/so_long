@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 10:49:52 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/06 20:02:06 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/06 20:07:29 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	**alloc_tab(t_game *game)
 	return (tab);
 }
 
-static void	*free_tab(char **tab, t_game *game)
+void	*free_tab(char **tab, t_game *game)
 {
 	int	i;
 
@@ -64,22 +64,23 @@ int	is_valid(int x, int y, t_game *game, char **visited)
 	return (1);
 }
 
-int	find_path(int x, int y, t_game *game, char c)
+int	find_path(int x, int y, t_game *game, char c, char **tab)
 {
-	static char	**visited;
+	char	**visited;
 
+	visited = tab;
 	if (!visited)
 		visited = alloc_tab(game);
 	if (game->map[y][x] == c)
 		return (free_tab(visited, game), 1);
 	visited[y][x] = 'V';
-	if (is_valid(x + 1, y, game, visited) && find_path(x + 1, y, game, c))
+	if (is_valid(x + 1, y, game, visited) && find_path(x + 1, y, game, c, visited))
 		return (1);
-	if (is_valid(x, y + 1, game, visited) && find_path(x, y + 1, game, c))
+	if (is_valid(x, y + 1, game, visited) && find_path(x, y + 1, game, c, visited))
 		return (1);
-	if (is_valid(x - 1, y, game, visited) && find_path(x - 1, y, game, c))
+	if (is_valid(x - 1, y, game, visited) && find_path(x - 1, y, game, c, visited))
 		return (1);
-	if (is_valid(x, y - 1, game, visited) && find_path(x, y - 1, game, c))
+	if (is_valid(x, y - 1, game, visited) && find_path(x, y - 1, game, c, visited))
 		return (1);
 	visited[y][x] = '0';
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 10:49:52 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/06 18:48:31 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/06 19:46:02 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	**alloc_tab(t_game *game)
 	{
 		tab[i] = (char *)malloc(sizeof(char) * game->width);
 		if (tab[i])
-			memset(tab[i], '0', game->width);
+			ft_bzero(tab[i], game->width);
 		i++;
 	}
 	return (tab);

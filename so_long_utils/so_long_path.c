@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 10:49:52 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/06 19:46:02 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/06 19:51:00 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,9 @@ void	*free_tab(char **tab, t_game *game)
 
 int	is_valid(int x, int y, t_game *game, char **visited)
 {
-	if (y < 0 || y >= game->height || x < 0 || x >= game->width
-		|| visited[y][x] == 'V' || game->map[y][x] == '1')
+	if (y < 0 || y >= game->height || x < 0 || x >= game->width)
+		return (0);
+	if (visited[y][x] == 'V' || game->map[y][x] == '1')
 		return (0);
 	return (1);
 }

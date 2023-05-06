@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 10:10:33 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/05 17:18:47 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/06 18:25:40 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void	remove_nl(char *str)
 void	read_map(char *av, t_game *game)
 {
 	int		fd;
-	char	*line;
 	int		height;
+	char	*line;
 
 	height = 0;
 	fd = open(av, O_RDONLY);
@@ -86,19 +86,23 @@ int	main(int ac, char **av)
 	t_game		*g;
 
 	g = malloc(sizeof(t_game));
-	if (ac != 2)
+	if (ac != 2 || !map_ext(av[1]))
 	{
 		ft_printf("Error: %s\n", strerror(errno));
-		exit (0);
+		exit (1);
 	}
 	read_map(av[1], g);
-	if (!map_ext(av[1]) || !rect_map(g) || !valid_walls(g) || !map_p_e(g)
+	if (find_path(player_pos(g)[0], player_pos(g)[1], g, 'C'))
+		ft_printf("Path found\n");
+	else
+		ft_printf("Path Not found\n");
+	if (!rect_map(g) || !valid_walls(g) || !map_p_e(g)
 		|| !valid_char(g))
-		exit (0);
+		exit (1);
 	if (!count_clctbls(g))
 	{
 		ft_printf("Error clctbls\n");
-		exit (0);
+		exit (1);
 	}
 	g->mlx = mlx_init();
 	g->win = mlx_new_window(g->mlx, 32 * g->width, 32 * g->height, "./so_long");

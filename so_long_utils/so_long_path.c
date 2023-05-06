@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 10:49:52 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/06 19:51:00 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/06 20:02:06 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	**alloc_tab(t_game *game)
 	return (tab);
 }
 
-void	*free_tab(char **tab, t_game *game)
+static void	*free_tab(char **tab, t_game *game)
 {
 	int	i;
 
@@ -71,10 +71,7 @@ int	find_path(int x, int y, t_game *game, char c)
 	if (!visited)
 		visited = alloc_tab(game);
 	if (game->map[y][x] == c)
-	{
-		free_tab(visited, game);
-		return (1);
-	}
+		return (free_tab(visited, game), 1);
 	visited[y][x] = 'V';
 	if (is_valid(x + 1, y, game, visited) && find_path(x + 1, y, game, c))
 		return (1);

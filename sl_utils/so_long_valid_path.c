@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 14:25:01 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/07 16:36:35 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/07 18:25:00 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	map_valid_path(t_game *game)
 {
 	int		i;
 	int		j;
-	int		cord[2];
 
 	i = 0;
 	while (i < game->height)
@@ -26,12 +25,14 @@ int	map_valid_path(t_game *game)
 		{
 			if (game->map[i][j] == 'C')
 			{
-				cord[0] = j;
-				cord[1] = i;
-				if (find_path(game->pos_x, game->pos_y, game, cord, NULL))
+				game->clct_x = j;
+				game->clct_y = i;
+				if (find_path(game->pos_x, game->pos_y, game, NULL))
 					ft_printf("Path found to (%d, %d)\n", j, i);
 				else
+				{
 					ft_printf("Path Not found to (%d, %d)\n", j, i);
+				}
 			}
 			j++;
 		}

@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 17:58:06 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/07 16:45:12 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/07 18:25:06 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef struct s_game {
 	int		clcted;
 	int		pos_x;
 	int		pos_y;
+	int		clct_x;
+	int		clct_y;
 	char	**map;
 	void	*mlx;
 	void	*win;
@@ -57,7 +59,7 @@ typedef struct s_game {
 int		ft_printf(const char *str, ...);
 int		key_press(int keycode, t_game *game);
 int		map_ext(char *filename);
-int		find_path(int x, int y, t_game *game, int cord[2], char **tab);
+int		find_path(int x, int y, t_game *game, char **tab);
 int		exit_game(t_game *game);
 int		rect_map(t_game *game);
 int		map_p_e(t_game *game);

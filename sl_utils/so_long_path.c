@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 10:49:52 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/07 17:02:17 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/07 18:25:47 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,26 +64,26 @@ int	is_valid(int x, int y, t_game *g, char **visited)
 	return (1);
 }
 
-int	find_path(int x, int y, t_game *g, int cord[2], char **tab)
+int	find_path(int x, int y, t_game *g, char **tab)
 {
 	char	**visited;
 
 	visited = tab;
 	if (!visited)
 		visited = alloc_tab(g);
-	if (x == cord[0] && y == cord[1])
+	if (x == g->clct_x && y == g->clct_y)
 	{
 		visited = free_tab(visited, g->height);
 		return (1);
 	}
 	visited[y][x] = 'V';
-	if (is_valid(x + 1, y, g, visited) && find_path(x + 1, y, g, cord, visited))
+	if (is_valid(x + 1, y, g, visited) && find_path(x + 1, y, g, visited))
 		return (1);
-	if (is_valid(x, y + 1, g, visited) && find_path(x, y + 1, g, cord, visited))
+	if (is_valid(x, y + 1, g, visited) && find_path(x, y + 1, g, visited))
 		return (1);
-	if (is_valid(x - 1, y, g, visited) && find_path(x - 1, y, g, cord, visited))
+	if (is_valid(x - 1, y, g, visited) && find_path(x - 1, y, g, visited))
 		return (1);
-	if (is_valid(x, y - 1, g, visited) && find_path(x, y - 1, g, cord, visited))
+	if (is_valid(x, y - 1, g, visited) && find_path(x, y - 1, g, visited))
 		return (1);
 	return (0);
 }

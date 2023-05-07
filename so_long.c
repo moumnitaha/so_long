@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 10:10:33 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/07 16:35:54 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/07 18:31:39 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	init_game(t_game *game)
 	game->clct = mlx_xpm_file_to_image(game->mlx, "./imgs/clct.xpm", &w, &h);
 	game->exit = mlx_xpm_file_to_image(game->mlx, "./imgs/exit.xpm", &w, &h);
 	game->open = mlx_xpm_file_to_image(game->mlx, "./imgs/open.xpm", &w, &h);
+	game->clctbls = count_clctbls(game);
 	game->mvmnts = 0;
 	game->clcted = 0;
 }
@@ -85,10 +86,7 @@ void	read_map(char *av, t_game *game)
 int	main(int ac, char **av)
 {
 	t_game		*g;
-	int			coord[2];
 
-	coord[0] = 32;
-	coord[1] = 4;
 	g = malloc(sizeof(t_game));
 	if (ac != 2 || !map_ext(av[1]))
 	{
@@ -107,7 +105,6 @@ int	main(int ac, char **av)
 	}
 	g->mlx = mlx_init();
 	g->win = mlx_new_window(g->mlx, DM * g->width, DM * g->height, "./so_long");
-	g->clctbls = count_clctbls(g);
 	init_game(g);
 	set_imgs(g, 1);
 	mlx_hook(g->win, X_EVENT_KEY_PRESS, 0, &key_press, g);

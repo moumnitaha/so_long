@@ -6,7 +6,7 @@
 #    By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 15:13:15 by tmoumni           #+#    #+#              #
-#    Updated: 2023/05/06 11:06:08 by tmoumni          ###   ########.fr        #
+#    Updated: 2023/05/07 16:09:22 by tmoumni          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,13 @@ MFLAGS = -lmlx -framework OpenGL -framework AppKit
 
 HEADER = so_long.h
 
-SRC = gnl/get_next_line.c gnl/get_next_line_utils.c so_long.c so_long_utils/so_long_utils.c so_long_utils/so_long_imgs.c\
-so_long_utils/so_long_path.c so_long_utils/so_long_checks.c so_long_utils/so_long_validation.c ft_printf/ft_printf.c ft_printf/ft_putnbr.c\
-ft_printf/ft_putchar.c ft_printf/ft_putstr.c ft_printf/ft_puthex.c ft_printf/ft_putunbr.c ft_printf/ft_putptr.c
+SRC = so_long.c\
+	sl_utils/so_long_utils.c sl_utils/so_long_imgs.c sl_utils/so_long_draw_tab.c sl_utils/so_long_valid_path.c\
+	sl_utils/so_long_path.c sl_utils/so_long_checks.c sl_utils/so_long_valid.c\
+	ft_printf/ft_printf.c ft_printf/ft_putnbr.c ft_printf/ft_putchar.c ft_printf/ft_putstr.c\
+	ft_printf/ft_puthex.c ft_printf/ft_putunbr.c ft_printf/ft_putptr.c\
+	ft_itoa/ft_itoa.c\
+	gnl/get_next_line.c gnl/get_next_line_utils.c\
 
 OBJS = $(SRC:%.c=%.o)
 

@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 14:53:52 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/05 16:55:14 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/07 12:30:14 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,14 @@ int	count_clctbls(t_game *game)
 
 void	set_imgs(t_game *g, int d)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	char	*moves;
+	char	*clcted;
 
 	i = 0;
+	moves = ft_itoa(g->mvmnts);
+	clcted = ft_itoa(g->clcted);
 	while (i < g->height)
 	{
 		j = 0;
@@ -65,6 +69,12 @@ void	set_imgs(t_game *g, int d)
 		}
 		i++;
 	}
+	mlx_string_put(g->mlx, g->win, 5, 5, 255255255, "Moves: ");
+	mlx_string_put(g->mlx, g->win, 80, 5, 255255255, moves);
+	mlx_string_put(g->mlx, g->win, 120, 5, 255255255, "Collected: ");
+	mlx_string_put(g->mlx, g->win, 230, 5, 255255255, clcted);
+	free(moves);
+	free(clcted);
 }
 
 void	win_game(t_game *game, int i, int j)
@@ -72,8 +82,7 @@ void	win_game(t_game *game, int i, int j)
 	if (game->map[i][j] == 'E' && game->clcted == game->clctbls)
 	{
 		ft_printf("\n\033[1;32m[[ Congratulations, u win ]]\033[0m\n");
-		mlx_destroy_image(game->mlx, game->win);
-		exit(0);
+		exit_game(game);
 	}
 }
 
@@ -81,12 +90,13 @@ void	move_ud_lr(t_game *game, int u_d, int l_r)
 {
 	int			x;
 	int			y;
-	static int	d;
 	char		**map;
+	static int	d;
 
 	map = game->map;
-	x = player_pos(game)[0];
-	y = player_pos(game)[1];
+	player_pos(game);
+	x = game->pos_x;
+	y = game->pos_y;
 	if (l_r)
 		d = l_r;
 	if (map[y + u_d][x + l_r] == '0' || map[y + u_d][x + l_r] == 'C')

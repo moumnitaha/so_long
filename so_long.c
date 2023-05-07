@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 10:10:33 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/06 20:05:27 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/07 16:35:54 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,16 @@ void	read_map(char *av, t_game *game)
 	free(line);
 	close(fd);
 	game->height = height;
+	player_pos(game);
 }
 
 int	main(int ac, char **av)
 {
 	t_game		*g;
+	int			coord[2];
 
+	coord[0] = 32;
+	coord[1] = 4;
 	g = malloc(sizeof(t_game));
 	if (ac != 2 || !map_ext(av[1]))
 	{
@@ -92,10 +96,7 @@ int	main(int ac, char **av)
 		exit (1);
 	}
 	read_map(av[1], g);
-	if (find_path(player_pos(g)[0], player_pos(g)[1], g, 'C', NULL))
-		ft_printf("Path found\n");
-	else
-		ft_printf("Path Not found\n");
+	map_valid_path(g);
 	if (!rect_map(g) || !valid_walls(g) || !map_p_e(g)
 		|| !valid_char(g))
 		exit (1);
@@ -105,7 +106,7 @@ int	main(int ac, char **av)
 		exit (1);
 	}
 	g->mlx = mlx_init();
-	g->win = mlx_new_window(g->mlx, 32 * g->width, 32 * g->height, "./so_long");
+	g->win = mlx_new_window(g->mlx, DM * g->width, DM * g->height, "./so_long");
 	g->clctbls = count_clctbls(g);
 	init_game(g);
 	set_imgs(g, 1);

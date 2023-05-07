@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_validation.c                               :+:      :+:    :+:   */
+/*   so_long_valid.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 12:33:02 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/05 16:57:10 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/07 14:47:22 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 
 int	exit_game(t_game *game)
 {
+	mlx_destroy_image(game->mlx, game->clct);
+	mlx_destroy_image(game->mlx, game->crc_l);
+	mlx_destroy_image(game->mlx, game->crc_r);
+	mlx_destroy_image(game->mlx, game->wall);
+	mlx_destroy_image(game->mlx, game->exit);
+	mlx_destroy_image(game->mlx, game->open);
+	mlx_destroy_image(game->mlx, game->land);
 	mlx_destroy_window(game->mlx, game->win);
 	exit(0);
 }
@@ -59,14 +66,12 @@ int	valid_char(t_game *game)
 	return (1);
 }
 
-int	*player_pos(t_game *game)
+void	player_pos(t_game *game)
 {
 	int	i;
 	int	j;
-	int	*pos;
 
 	i = 0;
-	pos = malloc(sizeof(int) * 2);
 	while (i < game->height)
 	{
 		j = 0;
@@ -74,15 +79,14 @@ int	*player_pos(t_game *game)
 		{
 			if (game->map[i][j] == 'P')
 			{
-				pos[0] = j;
-				pos[1] = i;
+				game->pos_x = j;
+				game->pos_y = i;
 				break ;
 			}
 			j++;
 		}
 		i++;
 	}
-	return (pos);
 }
 
 int	map_ext(char *file)
@@ -113,22 +117,3 @@ int	map_ext(char *file)
 	}
 	return (1);
 }
-
-// void	draw_map(t_game *game)
-// {
-// 	int	i;
-// 	int	j;
-
-// 	i = 0;
-// 	while (i < game->height)
-// 	{
-// 		j = 0;
-// 		while (game->map[i][j])
-// 		{
-// 			ft_printf("%c", game->map[i][j]);
-// 			j++;
-// 		}
-// 		ft_printf("\n");
-// 		i++;
-// 	}
-// }

@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 14:25:01 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/07 18:25:00 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/07 18:38:48 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,15 @@ int	map_valid_path(t_game *game)
 			{
 				game->clct_x = j;
 				game->clct_y = i;
-				if (find_path(game->pos_x, game->pos_y, game, NULL))
-					ft_printf("Path found to (%d, %d)\n", j, i);
-				else
+				if (!find_path(game->pos_x, game->pos_y, game, NULL))
 				{
-					ft_printf("Path Not found to (%d, %d)\n", j, i);
+					ft_printf("Error: Invalid path to (%d, %d)\n", i, j);
+					return (0);
 				}
 			}
 			j++;
 		}
 		i++;
 	}
-	return (0);
+	return (1);
 }

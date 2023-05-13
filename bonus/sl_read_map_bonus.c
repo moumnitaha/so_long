@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 15:26:39 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/13 18:08:45 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/13 19:59:50 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	read_map(char *av, t_game *game)
 	fd = open(av, O_RDONLY);
 	if (fd == -1)
 	{
-		ft_printf("Error: %s\n", strerror(errno));
+		ft_printf("Error:\n %s\n", strerror(errno));
 		exit (0);
 	}
 	game->map = (char **)malloc(sizeof(char *) * get_height(fd, game));

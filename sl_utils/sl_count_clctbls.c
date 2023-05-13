@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 15:22:46 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/13 16:42:30 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/13 20:04:18 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ int	count_clctbls(t_game *game)
 		i++;
 	}
 	if (!count)
-		ft_printf("\033[1;31mError: no clctbl found !\033[0m\n");
+		ft_printf("\033[1;31mError:\nNo clctbl found !\033[0m\n");
 	return (count);
 }

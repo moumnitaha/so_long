@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 12:34:47 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/13 18:08:05 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/13 19:58:33 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	is_valid_e(int x, int y, t_game *g, char **visited)
 {
 	if (y < 0 || y >= g->height || x < 0 || x >= g->width)
 		return (0);
-	if (visited[y][x] == 'V' || g->map[y][x] == '1')
+	if (visited[y][x] == 'V' || g->map[y][x] == '1' || g->map[y][x] == 'T')
 		return (0);
 	return (1);
 }
@@ -49,7 +49,7 @@ int	valid_path_to_exit(t_game *game)
 {
 	if (!find_path_e(game->pos_x, game->pos_y, game, NULL))
 	{
-		ft_printf("\033[1;31mError: Invalid path to Exit\033[0m\n");
+		ft_printf("\033[1;31mError:\nInvalid path to Exit\033[0m\n");
 		return (0);
 	}
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 15:49:20 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/13 18:09:40 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/13 20:01:20 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	valid_xpm(t_game *game)
 {
 	if (!check_xpm(game))
 	{
-		ft_printf("Error: unvalid Texture\n");
+		ft_printf("Error:\nInvalid Texture\n");
 		return (0);
 	}
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 10:10:33 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/13 17:40:54 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/13 20:05:03 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int ac, char **av)
 	g = malloc(sizeof(t_game));
 	if (ac != 2)
 	{
-		ft_printf("Error: %s\n", strerror(errno));
+		ft_printf("Error:\n%s\n", strerror(errno));
 		exit (0);
 	}
 	if (!valid_ext(av[1]))

@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 15:05:08 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/13 15:05:23 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/13 20:02:42 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	error_walls(void)
 {
-	ft_printf("\033[1;31m\nError: map not surounded with walls\033[0m\n\n");
+	ft_printf("\033[1;31m\nError:\nMap not surounded with walls\033[0m\n\n");
 	return (0);
 }
 

@@ -6,13 +6,13 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 15:26:39 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/13 15:28:14 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/13 17:39:17 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	get_height(int fd)
+int	get_height(int fd, t_game *game)
 {
 	int		height;
 	char	*line;
@@ -26,6 +26,7 @@ int	get_height(int fd)
 		height++;
 	}
 	free(line);
+	game->height = height;
 	return (height);
 }
 
@@ -41,27 +42,28 @@ void	remove_nl(char *str)
 void	read_map(char *av, t_game *game)
 {
 	int		fd;
-	int		height;
+	int		i;
 	char	*line;
 
-	height = 0;
 	fd = open(av, O_RDONLY);
 	if (fd == -1)
+	{
 		ft_printf("Error: %s\n", strerror(errno));
-	game->map = (char **)malloc(sizeof(char *) * get_height(fd));
+		exit (0);
+	}
+	game->map = (char **)malloc(sizeof(char *) * get_height(fd, game));
 	close(fd);
 	fd = open(av, O_RDONLY);
 	line = get_next_line(fd);
 	game->width = ft_strlen(line) - 1;
+	i = 0;
 	while (line)
 	{
 		remove_nl(line);
-		game->map[height] = line;
+		game->map[i] = line;
 		line = get_next_line(fd);
-		height++;
+		i++;
 	}
 	free(line);
 	close(fd);
-	game->height = height;
-	player_pos(game);
 }

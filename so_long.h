@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 17:58:06 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/13 15:56:57 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/13 16:36:59 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ void	read_map(char *av, t_game *game);
 void	init_game(t_game *game);
 int		exit_game(t_game *game);
 void	win_game(t_game *game, int i, int j);
+int		escape_game(t_game *game);
 
 #endif

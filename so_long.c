@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 10:10:33 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/13 16:04:12 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/13 16:56:45 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ int	main(int ac, char **av)
 		exit (0);
 	draw_imgs(g, 1);
 	mlx_hook(g->win, X_EVENT_KEY_PRESS, 0, &key_press, g);
-	mlx_hook(g->win, X_EVENT_KEY_EXIT, 0, &exit_game, g);
+	mlx_hook(g->win, X_EVENT_KEY_EXIT, 0, &escape_game, g);
 	mlx_loop(g->mlx);
 }

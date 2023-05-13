@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 12:34:47 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/13 15:44:45 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/13 16:48:32 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	valid_path_to_exit(t_game *game)
 {
 	if (!find_path_e(game->pos_x, game->pos_y, game, NULL))
 	{
-		ft_printf("Error: Invalid path to Exit\n");
+		ft_printf("\033[1;31mError: Invalid path to Exit\033[0m\n");
 		return (0);
 	}
 	return (1);

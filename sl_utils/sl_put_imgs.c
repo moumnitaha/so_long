@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_imgs.c                                     :+:      :+:    :+:   */
+/*   sl_put_imgs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:14:00 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/07 12:46:53 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/13 15:15:21 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	mlx_put_img(int i, int j, int d, t_game *g)
+void	mlx_put_imgs(int i, int j, int d, t_game *g)
 {
 	if (g->map[i][j] == '1')
 		mlx_put_image_to_window(g->mlx, g->win, g->wall, j * DM, i * DM);

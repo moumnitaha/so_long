@@ -6,7 +6,7 @@
 #    By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 15:13:15 by tmoumni           #+#    #+#              #
-#    Updated: 2023/05/07 16:09:22 by tmoumni          ###   ########.fr        #
+#    Updated: 2023/05/13 15:58:19 by tmoumni          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,11 @@ MFLAGS = -lmlx -framework OpenGL -framework AppKit
 HEADER = so_long.h
 
 SRC = so_long.c\
-	sl_utils/so_long_utils.c sl_utils/so_long_imgs.c sl_utils/so_long_draw_tab.c sl_utils/so_long_valid_path.c\
-	sl_utils/so_long_path.c sl_utils/so_long_checks.c sl_utils/so_long_valid.c\
+	sl_utils/alloc_free_tab.c sl_utils/ft_bzero.c sl_utils/sl_count_clctbls.c sl_utils/sl_count_P_E.c sl_utils/sl_draw_tab.c\
+	sl_utils/sl_exit_game.c sl_utils/sl_init_game.c sl_utils/sl_key_press.c sl_utils/sl_main_check.c sl_utils/sl_moves.c\
+	sl_utils/sl_path_to_C.c sl_utils/sl_path_to_exit.c sl_utils/sl_player_pos.c sl_utils/sl_put_imgs.c sl_utils/sl_read_map.c\
+	sl_utils/sl_rect_map.c sl_utils/sl_draw_imgs.c sl_utils/sl_valid_chars.c sl_utils/sl_valid_ext.c sl_utils/sl_valid_walls.c sl_utils/sl_win_game.c\
+	sl_utils/so_long_path.c sl_utils/sl_valid_xpm.c\
 	ft_printf/ft_printf.c ft_printf/ft_putnbr.c ft_printf/ft_putchar.c ft_printf/ft_putstr.c\
 	ft_printf/ft_puthex.c ft_printf/ft_putunbr.c ft_printf/ft_putptr.c\
 	ft_itoa/ft_itoa.c\

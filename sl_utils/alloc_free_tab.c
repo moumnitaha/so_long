@@ -1,33 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_draw_tab.c                                 :+:      :+:    :+:   */
+/*   alloc_free_tab.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/07 12:56:04 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/07 14:48:21 by tmoumni          ###   ########.fr       */
+/*   Created: 2023/05/13 15:09:52 by tmoumni           #+#    #+#             */
+/*   Updated: 2023/05/13 15:42:41 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	draw_tab(char **tab, int width, int height)
+char	**alloc_tab(t_game *game)
+{
+	char	**tab;
+	int		i;
+
+	i = 0;
+	tab = (char **)malloc(sizeof(char *) * game->height);
+	while (i < game->height)
+	{
+		tab[i] = (char *)malloc(sizeof(char) * game->width);
+		if (tab[i])
+			ft_bzero(tab[i], game->width);
+		i++;
+	}
+	return (tab);
+}
+
+void	*free_tab(char **tab, int height)
 {
 	int	i;
-	int	j;
 
 	i = 0;
 	while (i < height)
 	{
-		j = 0;
-		while (j < width)
-		{
-			ft_printf("%c ", tab[i][j]);
-			j++;
-		}
-		ft_printf("\n");
+		free(tab[i]);
 		i++;
 	}
-	ft_printf("\n");
+	free(tab);
+	return (NULL);
 }

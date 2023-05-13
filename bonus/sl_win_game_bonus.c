@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_draw_imgs.c                                     :+:      :+:    :+:   */
+/*   sl_win_game_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/13 15:23:26 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/13 18:33:13 by tmoumni          ###   ########.fr       */
+/*   Created: 2023/05/02 14:53:52 by tmoumni           #+#    #+#             */
+/*   Updated: 2023/05/13 18:09:48 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "so_long_bonus.h"
 
-void	*draw_imgs(t_game *g, int d)
+void	win_game(t_game *g, int i, int j)
 {
-	int		i;
-	int		j;
-
-	i = -1;
-	mlx_clear_window(g->mlx, g->win);
-	while (++i < g->height)
+	if (g->map[i][j] == 'E' && g->clcted == g->clctbls)
 	{
-		j = 0;
-		while (j < g->width)
-		{
-			mlx_put_imgs(i, j, d, g);
-			j++;
-		}
+		ft_printf("\n\033[1;32m[[ Congratulations ]]\033[0m\n");
+		ft_printf("\033[1;32m[[ u win in %d moves ]]\033[0m\n", g->mvmnts);
+		ft_printf("\033[1;32m[[ is that the best u can do ? ]]\033[0m\n");
+		exit_game(g);
 	}
-	return (0);
 }

@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_draw_imgs.c                                     :+:      :+:    :+:   */
+/*   sl_key_press_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/13 15:23:26 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/13 18:33:13 by tmoumni          ###   ########.fr       */
+/*   Created: 2023/05/13 15:22:12 by tmoumni           #+#    #+#             */
+/*   Updated: 2023/05/13 18:06:27 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "so_long_bonus.h"
 
-void	*draw_imgs(t_game *g, int d)
+int	key_press(int keycode, t_game *game)
 {
-	int		i;
-	int		j;
-
-	i = -1;
-	mlx_clear_window(g->mlx, g->win);
-	while (++i < g->height)
-	{
-		j = 0;
-		while (j < g->width)
-		{
-			mlx_put_imgs(i, j, d, g);
-			j++;
-		}
-	}
+	if (keycode == KEY_W || keycode == KEY_UP)
+		move_ud_lr(game, -1, 0);
+	else if (keycode == KEY_S || keycode == KEY_DOWN)
+		move_ud_lr(game, 1, 0);
+	else if (keycode == KEY_A || keycode == KEY_LEFT)
+		move_ud_lr(game, 0, -1);
+	else if (keycode == KEY_D || keycode == KEY_RIGHT)
+		move_ud_lr(game, 0, 1);
+	else if (keycode == KEY_ESC)
+		exit_game(game);
 	return (0);
 }

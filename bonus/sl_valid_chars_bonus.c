@@ -1,32 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_draw_imgs.c                                     :+:      :+:    :+:   */
+/*   sl_valid_chars_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/13 15:23:26 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/13 18:33:13 by tmoumni          ###   ########.fr       */
+/*   Created: 2023/05/13 15:17:36 by tmoumni           #+#    #+#             */
+/*   Updated: 2023/05/13 18:09:09 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "so_long_bonus.h"
 
-void	*draw_imgs(t_game *g, int d)
+int	included_char(char c)
 {
+	char	*chars;
+	int		i;
+
+	i = 0;
+	chars = "01CPE";
+	while (i < 5)
+	{
+		if (c == chars[i])
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	valid_chars(t_game *game)
+{
+	char	**map;
 	int		i;
 	int		j;
 
-	i = -1;
-	mlx_clear_window(g->mlx, g->win);
-	while (++i < g->height)
+	map = game->map;
+	i = 0;
+	while (i < game->height)
 	{
 		j = 0;
-		while (j < g->width)
+		while (j < game->width)
 		{
-			mlx_put_imgs(i, j, d, g);
+			if (!included_char(map[i][j]))
+			{
+				ft_printf("\033[1;31mError: invalid char in map\033[0m\n\n");
+				return (0);
+			}
 			j++;
 		}
+		i++;
 	}
-	return (0);
+	return (1);
 }

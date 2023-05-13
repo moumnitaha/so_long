@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_draw_imgs.c                                     :+:      :+:    :+:   */
+/*   sl_count_clctbls_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/13 15:23:26 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/13 18:33:13 by tmoumni          ###   ########.fr       */
+/*   Created: 2023/05/13 15:22:46 by tmoumni           #+#    #+#             */
+/*   Updated: 2023/05/13 18:05:02 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "so_long_bonus.h"
 
-void	*draw_imgs(t_game *g, int d)
+int	count_clctbls(t_game *game)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
+	int	count;
 
-	i = -1;
-	mlx_clear_window(g->mlx, g->win);
-	while (++i < g->height)
+	i = 0;
+	count = 0;
+	while (i < game->height)
 	{
 		j = 0;
-		while (j < g->width)
+		while (j < game->width)
 		{
-			mlx_put_imgs(i, j, d, g);
+			if (game->map[i][j] == 'C')
+				count++;
 			j++;
 		}
+		i++;
 	}
-	return (0);
+	if (!count)
+		ft_printf("\033[1;31mError: no clctbl found !\033[0m\n");
+	return (count);
 }

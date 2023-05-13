@@ -1,32 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_draw_imgs.c                                     :+:      :+:    :+:   */
+/*   alloc_free_tab_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/13 15:23:26 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/13 18:33:13 by tmoumni          ###   ########.fr       */
+/*   Created: 2023/05/13 15:09:52 by tmoumni           #+#    #+#             */
+/*   Updated: 2023/05/13 18:04:43 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "so_long_bonus.h"
 
-void	*draw_imgs(t_game *g, int d)
+char	**alloc_tab(t_game *game)
 {
+	char	**tab;
 	int		i;
-	int		j;
 
-	i = -1;
-	mlx_clear_window(g->mlx, g->win);
-	while (++i < g->height)
+	i = 0;
+	tab = (char **)malloc(sizeof(char *) * game->height);
+	while (i < game->height)
 	{
-		j = 0;
-		while (j < g->width)
-		{
-			mlx_put_imgs(i, j, d, g);
-			j++;
-		}
+		tab[i] = (char *)malloc(sizeof(char) * game->width);
+		if (tab[i])
+			ft_bzero(tab[i], game->width);
+		i++;
 	}
-	return (0);
+	return (tab);
+}
+
+void	*free_tab(char **tab, int height)
+{
+	int	i;
+
+	i = 0;
+	while (i < height)
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+	return (NULL);
 }

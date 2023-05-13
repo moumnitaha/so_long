@@ -1,32 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_draw_imgs.c                                     :+:      :+:    :+:   */
+/*   sl_count_P_E_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/13 15:23:26 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/13 18:33:13 by tmoumni          ###   ########.fr       */
+/*   Created: 2023/05/13 15:03:35 by tmoumni           #+#    #+#             */
+/*   Updated: 2023/05/13 18:05:12 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "so_long_bonus.h"
 
-void	*draw_imgs(t_game *g, int d)
+int	count_p_e(t_game *game)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
+	int	p_e;
 
-	i = -1;
-	mlx_clear_window(g->mlx, g->win);
-	while (++i < g->height)
+	i = 0;
+	p_e = 0;
+	j = 0;
+	while (i < game->height)
 	{
 		j = 0;
-		while (j < g->width)
+		while (j < game->width)
 		{
-			mlx_put_imgs(i, j, d, g);
+			if (game->map[i][j] == 'P' || game->map[i][j] == 'E')
+				p_e++;
 			j++;
 		}
+		i++;
 	}
-	return (0);
+	if (p_e != 2)
+	{	
+		ft_printf("\033[1;31m\nError: more\\less than 1 exit - player\033[0m\n\n");
+		return (0);
+	}
+	return (1);
 }

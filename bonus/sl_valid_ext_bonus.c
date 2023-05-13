@@ -1,32 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_draw_imgs.c                                     :+:      :+:    :+:   */
+/*   sl_valid_ext_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/13 15:23:26 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/13 18:33:13 by tmoumni          ###   ########.fr       */
+/*   Created: 2023/05/13 15:18:55 by tmoumni           #+#    #+#             */
+/*   Updated: 2023/05/13 18:09:19 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "so_long_bonus.h"
 
-void	*draw_imgs(t_game *g, int d)
+int	valid_ext(char *file)
 {
+	int		len;
+	int		dot;
 	int		i;
-	int		j;
+	char	*ber;
 
+	len = ft_strlen(file);
+	dot = 0;
 	i = -1;
-	mlx_clear_window(g->mlx, g->win);
-	while (++i < g->height)
+	ber = ".ber";
+	while (i++ < len)
 	{
-		j = 0;
-		while (j < g->width)
+		if (i < 4 && (file[len - 1 - i] != ber[3 - i]))
 		{
-			mlx_put_imgs(i, j, d, g);
-			j++;
+			ft_printf("\033[1;31m\nError: map ext not valid\033[0m\n\n");
+			return (0);
 		}
+		if (file[i] == '.')
+			dot++;
 	}
-	return (0);
+	if (dot > 1)
+	{
+		ft_printf("\033[1;31m\nError: map ext not valid\033[0m\n\n");
+		return (0);
+	}
+	return (1);
 }

@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_draw_tab.c                                      :+:      :+:    :+:   */
+/*   sl_player_pos_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/07 12:56:04 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/13 15:13:37 by tmoumni          ###   ########.fr       */
+/*   Created: 2023/05/04 12:33:02 by tmoumni           #+#    #+#             */
+/*   Updated: 2023/05/13 18:08:21 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "so_long_bonus.h"
 
-void	draw_tab(char **tab, int width, int height)
+void	player_pos(t_game *game)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < height)
+	while (i < game->height)
 	{
 		j = 0;
-		while (j < width)
+		while (j < game->width)
 		{
-			ft_printf("%c ", tab[i][j]);
+			if (game->map[i][j] == 'P')
+			{
+				game->pos_x = j;
+				game->pos_y = i;
+				break ;
+			}
 			j++;
 		}
-		ft_printf("\n");
 		i++;
 	}
-	ft_printf("\n");
 }

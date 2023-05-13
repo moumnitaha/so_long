@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 15:25:46 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/13 18:06:23 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/13 18:56:11 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	init_game(t_game *game)
 	game->clct = mlx_xpm_file_to_image(game->mlx, "./imgs/clct.xpm", &w, &h);
 	game->exit = mlx_xpm_file_to_image(game->mlx, "./imgs/exit.xpm", &w, &h);
 	game->open = mlx_xpm_file_to_image(game->mlx, "./imgs/open.xpm", &w, &h);
+	game->ptrl = mlx_xpm_file_to_image(game->mlx, "./imgs/patrol.xpm", &w, &h);
 	game->clctbls = count_clctbls(game);
 	game->mvmnts = 0;
 	game->clcted = 0;

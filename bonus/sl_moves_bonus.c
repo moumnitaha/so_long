@@ -6,11 +6,20 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 15:24:27 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/13 18:32:36 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/13 19:04:24 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
+
+void	touch_patrol(t_game *game, int x, int y)
+{
+	if (game->map[y][x] == 'T')
+	{
+		ft_printf("\033[1;31m\n[[  U Lose  ]]\033[0m\n\n");
+		exit_game(game);
+	}
+}
 
 void	move_ud_lr(t_game *game, int u_d, int l_r)
 {
@@ -36,6 +45,7 @@ void	move_ud_lr(t_game *game, int u_d, int l_r)
 			map[y + u_d][x] = 'P';
 		game->mvmnts++;
 	}
+	touch_patrol(game, x + l_r, y + u_d);
 	draw_imgs(game, d);
 	win_game(game, y + u_d, x + l_r);
 }

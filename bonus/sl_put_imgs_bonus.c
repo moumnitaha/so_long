@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:14:00 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/13 18:08:31 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/13 18:57:51 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,6 @@ void	mlx_put_imgs(int i, int j, int d, t_game *g)
 		mlx_put_image_to_window(g->mlx, g->win, g->crc_r, j * DM, i * DM);
 	else if (g->map[i][j] == '0')
 		mlx_put_image_to_window(g->mlx, g->win, g->land, j * DM, i * DM);
+	else if (g->map[i][j] == 'T')
+		mlx_put_image_to_window(g->mlx, g->win, g->ptrl, j * DM, i * DM);
 }

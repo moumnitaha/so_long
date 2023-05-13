@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 17:58:06 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/13 17:59:19 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/13 18:55:40 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_game {
 	char	*crc_l;
 	char	*crc_r;
 	char	*land;
+	char	*ptrl;
 }	t_game;
 
 int		ft_printf(const char *str, ...);

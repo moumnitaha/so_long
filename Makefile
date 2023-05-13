@@ -6,7 +6,7 @@
 #    By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 15:13:15 by tmoumni           #+#    #+#              #
-#    Updated: 2023/05/13 18:31:46 by tmoumni          ###   ########.fr        #
+#    Updated: 2023/05/13 18:37:56 by tmoumni          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ HEADER = so_long.h
 B_HEADER = bonus/so_long_bonus.h
 
 SRCS = so_long.c\
-	sl_utils/alloc_free_tab.c sl_utils/ft_bzero.c sl_utils/sl_count_clctbls.c sl_utils/sl_count_P_E.c sl_utils/sl_draw_tab.c\
+	sl_utils/alloc_free_tab.c sl_utils/ft_bzero.c sl_utils/sl_count_clctbls.c sl_utils/sl_count_P_E.c\
 	sl_utils/sl_exit_game.c sl_utils/sl_init_game.c sl_utils/sl_key_press.c sl_utils/sl_main_check.c sl_utils/sl_moves.c\
 	sl_utils/sl_path_to_C.c sl_utils/sl_path_to_exit.c sl_utils/sl_player_pos.c sl_utils/sl_put_imgs.c sl_utils/sl_read_map.c\
 	sl_utils/sl_rect_map.c sl_utils/sl_draw_imgs.c sl_utils/sl_valid_chars.c sl_utils/sl_valid_ext.c sl_utils/sl_valid_walls.c sl_utils/sl_win_game.c\
@@ -33,7 +33,7 @@ SRCS = so_long.c\
 	gnl/get_next_line.c gnl/get_next_line_utils.c
 
 B_SRCS = bonus/so_long_bonus.c\
-	bonus/alloc_free_tab_bonus.c bonus/ft_bzero_bonus.c bonus/sl_count_clctbls_bonus.c bonus/sl_count_P_E_bonus.c bonus/sl_draw_tab_bonus.c\
+	bonus/alloc_free_tab_bonus.c bonus/ft_bzero_bonus.c bonus/sl_count_clctbls_bonus.c bonus/sl_count_P_E_bonus.c\
 	bonus/sl_exit_game_bonus.c bonus/sl_init_game_bonus.c bonus/sl_key_press_bonus.c bonus/sl_main_check_bonus.c bonus/sl_moves_bonus.c\
 	bonus/sl_path_to_C_bonus.c bonus/sl_path_to_exit_bonus.c bonus/sl_player_pos_bonus.c bonus/sl_put_imgs_bonus.c bonus/sl_read_map_bonus.c\
 	bonus/sl_rect_map_bonus.c bonus/sl_draw_imgs_bonus.c bonus/sl_valid_chars_bonus.c bonus/sl_valid_ext_bonus.c bonus/sl_valid_walls_bonus.c\

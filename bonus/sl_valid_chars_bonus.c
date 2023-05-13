@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 15:17:36 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/13 18:09:09 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/13 18:56:34 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	included_char(char c)
 	int		i;
 
 	i = 0;
-	chars = "01CPE";
-	while (i < 5)
+	chars = "01CPET";
+	while (i < 6)
 	{
 		if (c == chars[i])
 			return (1);

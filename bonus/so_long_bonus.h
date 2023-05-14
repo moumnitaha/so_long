@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 17:58:06 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/13 18:55:40 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/14 18:02:02 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,12 @@ int		count_clctbls(t_game *game);
 int		valid_chars(t_game *game);
 int		so_long_check(t_game *g);
 int		valid_xpm(t_game *game);
+int		map_has_nl(void);
 char	*get_next_line(int fd);
 char	*ft_itoa(int n);
 char	**alloc_tab(t_game *game);
 void	*free_tab(char **tab, int height);
 void	ft_bzero(void *s, size_t length);
-void	draw_tab(char **tab, int width, int height);
 void	*draw_imgs(t_game *g, int d);
 void	move_ud_lr(t_game *game, int u_d, int l_r);
 void	player_pos(t_game *game);

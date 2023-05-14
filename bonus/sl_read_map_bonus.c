@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 15:26:39 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/14 15:18:26 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/14 18:01:31 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	read_map(char *av, t_game *game)
 	while (line)
 	{
 		if (i == game->height - 1 && has_nl(line))
-			exit (0);
+			map_has_nl();
 		remove_nl(line);
 		game->map[i] = line;
 		line = get_next_line(fd);

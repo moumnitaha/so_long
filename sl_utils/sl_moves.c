@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 15:24:27 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/13 15:58:55 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/14 17:53:08 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	move_ud_lr(t_game *game, int u_d, int l_r)
 		if (u_d)
 			map[y + u_d][x] = 'P';
 		game->mvmnts++;
-		ft_printf("moves: %d & clct: %d\n", game->mvmnts, game->clcted);
+		ft_printf("Moves: %d - Collected: %d\n", game->mvmnts, game->clcted);
 	}
 	draw_imgs(game, d);
 	win_game(game, y + u_d, x + l_r);

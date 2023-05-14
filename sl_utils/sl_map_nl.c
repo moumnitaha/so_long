@@ -1,42 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_valid_xpm.c                                     :+:      :+:    :+:   */
+/*   sl_map_nl.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/13 15:49:20 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/14 17:31:06 by tmoumni          ###   ########.fr       */
+/*   Created: 2023/05/14 17:54:30 by tmoumni           #+#    #+#             */
+/*   Updated: 2023/05/14 17:59:47 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	check_xpm(t_game *game)
+int	map_has_nl(void)
 {
-	if (!game->crc_l)
-		return (0);
-	if (!game->crc_r)
-		return (0);
-	if (!game->land)
-		return (0);
-	if (!game->exit)
-		return (0);
-	if (!game->open)
-		return (0);
-	if (!game->clct)
-		return (0);
-	if (!game->wall)
-		return (0);
-	return (1);
-}
-
-int	valid_xpm(t_game *game)
-{
-	if (!check_xpm(game))
-	{
-		ft_printf("\033[1;31mError:\nInvalid Texture\033[0m\n");
-		return (0);
-	}
-	return (1);
+	ft_printf("\033[1;31mError:\nNew line in map\n\033[0m");
+	exit (0);
 }

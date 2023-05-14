@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 10:10:33 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/13 20:01:55 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/14 14:45:38 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ int	main(int ac, char **av)
 		exit (0);
 	read_map(av[1], g);
 	player_pos(g);
-	if (!so_long_check(g))
-		exit (0);
 	g->mlx = mlx_init();
 	g->win = mlx_new_window(g->mlx, DM * g->width, DM * g->height, "./so_long");
 	init_game(g);
+	if (!so_long_check(g))
+		exit (0);
 	draw_imgs(g, 1);
 	mlx_hook(g->win, X_EVENT_KEY_PRESS, 0, &key_press, g);
 	mlx_hook(g->win, X_EVENT_KEY_EXIT, 0, &escape_game, g);

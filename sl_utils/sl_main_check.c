@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 14:48:13 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/14 11:21:15 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/14 14:43:16 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	so_long_check(t_game *g)
 	if (!valid_path_to_c(g))
 		return (0);
 	if (!valid_path_to_exit(g))
+		return (0);
+	if (!valid_xpm(g))
 		return (0);
 	return (1);
 }

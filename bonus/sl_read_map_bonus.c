@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 15:26:39 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/13 19:59:50 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/14 15:11:18 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,29 @@ void	remove_nl(char *str)
 		str[len - 1] = '\0';
 }
 
+void	valid_fd(int fd)
+{
+	if (fd == -1)
+	{
+		ft_printf("Error:\n%s\n", strerror(errno));
+		exit (0);
+	}
+}
+
+int	has_nl(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '\n')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 void	read_map(char *av, t_game *game)
 {
 	int		fd;
@@ -46,11 +69,7 @@ void	read_map(char *av, t_game *game)
 	char	*line;
 
 	fd = open(av, O_RDONLY);
-	if (fd == -1)
-	{
-		ft_printf("Error:\n %s\n", strerror(errno));
-		exit (0);
-	}
+	valid_fd(fd);
 	game->map = (char **)malloc(sizeof(char *) * get_height(fd, game));
 	close(fd);
 	fd = open(av, O_RDONLY);
@@ -59,6 +78,8 @@ void	read_map(char *av, t_game *game)
 	i = 0;
 	while (line)
 	{
+		if (i == game->height - 1 && has_nl(line))
+			exit (1);
 		remove_nl(line);
 		game->map[i] = line;
 		line = get_next_line(fd);

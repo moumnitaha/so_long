@@ -6,7 +6,7 @@
 #    By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 15:13:15 by tmoumni           #+#    #+#              #
-#    Updated: 2023/05/13 18:37:56 by tmoumni          ###   ########.fr        #
+#    Updated: 2023/05/14 14:16:48 by tmoumni          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ BONUS = so_long_bonus
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-
 MFLAGS = -lmlx -framework OpenGL -framework AppKit
 
 HEADER = so_long.h

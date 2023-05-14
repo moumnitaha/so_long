@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_map_nl_bonus.c                                  :+:      :+:    :+:   */
+/*   sl_args_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/14 17:54:30 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/14 18:16:35 by tmoumni          ###   ########.fr       */
+/*   Created: 2023/05/14 18:11:37 by tmoumni           #+#    #+#             */
+/*   Updated: 2023/05/14 18:18:43 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	map_has_nl(void)
+int	error_args(void)
 {
-	ft_printf("\033[1;31mError:\nNew line in map\n\033[0m");
+	ft_printf("\033[1;31mError:\nUsage: ./so_long_bonus map.ber\n\033[0m");
 	exit (0);
 }

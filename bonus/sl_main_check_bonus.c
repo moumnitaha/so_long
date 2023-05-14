@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 14:48:13 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/13 18:07:21 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/14 11:21:36 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ int	so_long_check(t_game *g)
 {
 	if (!rect_map(g))
 		return (0);
+	if (!valid_chars(g))
+		return (0);
 	if (!valid_walls(g))
 		return (0);
 	if (!count_p_e(g))
 		return (0);
 	if (!count_clctbls(g))
-		return (0);
-	if (!valid_chars(g))
 		return (0);
 	if (!valid_path_to_c(g))
 		return (0);

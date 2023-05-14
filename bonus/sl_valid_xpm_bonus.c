@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 15:49:20 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/13 20:01:20 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/14 10:09:59 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	check_xpm(t_game *game)
 	if (!game->clct)
 		return (0);
 	if (!game->wall)
+		return (0);
+	if (!game->ptrl)
 		return (0);
 	return (1);
 }

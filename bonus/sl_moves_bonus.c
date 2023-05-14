@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 15:24:27 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/05/13 19:04:24 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/05/14 11:13:37 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	touch_patrol(t_game *game, int x, int y)
 {
 	if (game->map[y][x] == 'T')
 	{
-		ft_printf("\033[1;31m\n[[  U Lose  ]]\033[0m\n\n");
+		ft_printf("\033[1;31m\n[[  U Lose :/ ]]\033[0m\n\n");
 		exit_game(game);
 	}
 }
